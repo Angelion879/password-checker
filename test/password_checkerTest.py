@@ -5,7 +5,7 @@ import password_checker
 
 class password_hasher (unittest.TestCase):
   
-  def test_should_hash_password_received(self):
+  def test_if_password_received_is_correctly_hashed(self):
     expected_value = "CBFDAC6008F9CAB4083784CBD1874F76618D2A97"
     test_input = "password123"
     actual_result = password_checker.password_hasher(test_input)
