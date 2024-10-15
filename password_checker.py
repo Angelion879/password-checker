@@ -7,7 +7,7 @@ def password_hasher(user_input):
   return hash.hexdigest().upper()
 
 def get_first_five_digits(hashed_password):
-  shortened_hash = hashed_password[:5]
+  shortened_hash = password_hasher(hashed_password)[:5]
   return shortened_hash
 
 
