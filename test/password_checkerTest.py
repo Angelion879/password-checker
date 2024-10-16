@@ -3,7 +3,7 @@ import sys
 sys.path.append('..\password-checker')
 import password_checker
 
-class password_hasher (unittest.TestCase):
+class password_check (unittest.TestCase):
   test_input = "password123"
   
   def test_if_password_received_is_correctly_hashed(self):
