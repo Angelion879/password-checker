@@ -14,7 +14,7 @@ class password_check (unittest.TestCase):
 
   def test_if_first_five_digits_are_returned(self):
     expected_value = "CBFDA"
-    actual_result = password_checker.get_first_five_digits(self.test_input)
+    actual_result = password_checker.get_first_five_hashed_characters(self.test_input)
 
     self.assertEqual(expected_value, actual_result)
 
