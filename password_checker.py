@@ -1,4 +1,5 @@
 import sys
+import requests
 from hashlib import sha1
 
 def password_hasher(user_input):
@@ -18,6 +19,7 @@ def api_url_constructor(user_password):
 
 if __name__ == "__main__":
   passwords = sys.argv[1]
-  new_passcode = get_first_five_digits(passwords)
+  url = api_url_constructor(passwords)
+  res = requests.get(url)
 
-  print(new_passcode)
+  print(res)
