@@ -18,6 +18,12 @@ class password_hasher (unittest.TestCase):
 
     self.assertEqual(expected_value, actual_result)
 
+  def test_if_url_built_correctly(self):
+    expected_value = 'https://api.pwnedpasswords.com/range/CBFDA'
+    actual_result = password_checker.api_url_constructor(self.test_input)
+
+    self.assertEqual(expected_value, actual_result)
+
 
 if __name__ == '__main__':
     unittest.main()
