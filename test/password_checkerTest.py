@@ -19,10 +19,10 @@ class password_check (unittest.TestCase):
 
     self.assertEqual(expected_value, actual_result)
 
-  def test_if_url_built_correctly(self):
-    expected_value = 'https://api.pwnedpasswords.com/range/CBFDA'
+  def test_if_its_connecting_to_api(self):
+    expected_value = 200
     test_input = "CBFDA"
-    actual_result = password_checker.api_url_constructor(test_input)
+    actual_result = password_checker.request_api_data(test_input)
 
     self.assertEqual(expected_value, actual_result)
 
