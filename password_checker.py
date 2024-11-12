@@ -10,15 +10,15 @@ def password_hasher(user_input):
     return hashed.hexdigest().upper()
 
 
-def get_first_five_hashed_characters(hashed_password):
-    shortened_hash = hashed_password[:5]
+def split_hash(hashed_password):
+    head = hashed_password[:5]
+    tail = hashed_password[5:]
 
-    return shortened_hash
+    return head, tail
 
 
-def request_api_data(hash_word):
-    short_hashcode = get_first_five_hashed_characters(hash_word)
-    request_url = f'https://api.pwnedpasswords.com/range/{short_hashcode}'
+def request_api_data(hash_head):
+    request_url = f'https://api.pwnedpasswords.com/range/{hash_head}'
 
     res = requests.get(request_url)
 
@@ -33,8 +33,4 @@ def check_pwned_api(password):
 
 
 if __name__ == "__main__":
-    passwords = sys.argv[1]
-    HASHED = password_hasher(passwords)
-    response = request_api_data(HASHED)
-
-    print(response)
+    print('OK')
