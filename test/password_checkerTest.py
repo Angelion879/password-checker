@@ -1,7 +1,7 @@
-import password_checker
 import unittest
 import sys
 sys.path.append(r'..\password-checker')
+import password_checker
 
 
 class password_check (unittest.TestCase):
@@ -26,7 +26,7 @@ class password_check (unittest.TestCase):
         test_input = "CBFDA"
         actual_result = password_checker.request_api_data(test_input)
 
-        self.assertEqual(expected_value, actual_result)
+        self.assertEqual(expected_value, actual_result.status_code)
 
 
 if __name__ == '__main__':
