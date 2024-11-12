@@ -13,13 +13,15 @@ class password_check (unittest.TestCase):
 
         self.assertEqual(expected_value, actual_result)
 
-    def test_if_first_five_digits_are_returned(self):
-        expected_value = "CBFDA"
+    def test_if_split_values_digits_are_returned(self):
+        expected_first = "CBFDA"
+        expected_last = "C6008F9CAB4083784CBD1874F76618D2A97"
         test_input = "CBFDAC6008F9CAB4083784CBD1874F76618D2A97"
-        actual_result = password_checker.get_first_five_hashed_characters(
+        first_part, last_part = password_checker.split_hash(
             test_input)
 
-        self.assertEqual(expected_value, actual_result)
+        self.assertEqual(expected_first, first_part)
+        self.assertEqual(expected_last, last_part)
 
     def test_if_its_connecting_to_api(self):
         expected_value = 200
