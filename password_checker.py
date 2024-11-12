@@ -26,12 +26,15 @@ def request_api_data(hash_word):
         raise RuntimeError(f'Connection error, status {
                            res.status_code}. Check API and try again.')
 
-    return res.status_code
+    return res
+
+def check_pwned_api(password):
+    pass
 
 
 if __name__ == "__main__":
     passwords = sys.argv[1]
     HASHED = password_hasher(passwords)
-    response_code = request_api_data(HASHED)
+    response = request_api_data(HASHED)
 
-    print(response_code)
+    print(response)
