@@ -36,8 +36,7 @@ def check_api_data_for_password_leaks(api_hashes, hash_to_be_checked):
             return leak_count
     return 0
 
-if __name__ == "__main__":
-    user_password = sys.argv[1]
+def pwned_password_checker(user_password):
     HASHED = password_hasher(user_password)
     heads, tails = split_hash(HASHED)
 
@@ -45,4 +44,14 @@ if __name__ == "__main__":
 
     leaked_counter = check_api_data_for_password_leaks(pwned_api_data, tails)
 
-    print(f'the password {user_password} was leaked {leaked_counter} times')
+    if leaked_counter:
+        print(f'the password {user_password} was leaked {leaked_counter} times. Maybe change that?')
+    else:
+        print(f'the password {user_password} was NOT leaked. Keep it going!')
+
+if __name__ == "__main__":
+    passwords = sys.argv[1:]
+
+    for p in passwords:
+        pwned_password_checker(p)
+    
