@@ -45,13 +45,13 @@ def pwned_password_checker(user_password):
     leaked_counter = check_api_data_for_password_leaks(pwned_api_data, tails)
 
     if leaked_counter:
-        print(f'the password {user_password} was leaked {leaked_counter} times. Maybe change that?')
+        return(f'the password {user_password} was leaked {leaked_counter} times. Maybe change that?')
     else:
-        print(f'the password {user_password} was NOT leaked. Keep it going!')
+        return(f'the password {user_password} was NOT leaked. Keep it going!')
 
 if __name__ == "__main__":
     passwords = sys.argv[1:]
 
     for p in passwords:
-        pwned_password_checker(p)
+        print(pwned_password_checker(p))
     
