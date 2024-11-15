@@ -33,6 +33,19 @@ class password_check (unittest.TestCase):
 
         self.assertEqual(expected_value, actual_result.status_code)
 
+    def test_if_correct_message_is_returned_when_NO_leaks_are_detected(self):
+        test_input = 'thisShouldNot_beLeaked'
+        expected_value = f'the password {test_input} was NOT leaked. Keep it going!'
+        actual_result = password_checker.pwned_password_checker(test_input)
+
+        self.assertEqual(expected_value, actual_result)
+    
+    def test_if_correct_message_is_returned_when_leaks_ARE_detected(self):
+        expected_value = f'the password {self.test_password} was leaked {self.test_leaks_count} times. Maybe change that?'
+        actual_result = password_checker.pwned_password_checker(self.test_password)
+
+        self.assertEqual(expected_value, actual_result)
+
 
 if __name__ == '__main__':
     unittest.main()
